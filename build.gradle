@@ -1,0 +1,19 @@
+group 'ua.nykyforov'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.22'
+
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.0-M4"
+    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
