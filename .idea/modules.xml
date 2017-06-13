@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/try-geolocation.iml" filepath="$PROJECT_DIR$/.idea/try-geolocation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/try-geolocation_jmh.iml" filepath="$PROJECT_DIR$/.idea/modules/try-geolocation_jmh.iml" group="try-geolocation" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/try-geolocation_main.iml" filepath="$PROJECT_DIR$/.idea/modules/try-geolocation_main.iml" group="try-geolocation" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/try-geolocation_test.iml" filepath="$PROJECT_DIR$/.idea/modules/try-geolocation_test.iml" group="try-geolocation" />
     </modules>
