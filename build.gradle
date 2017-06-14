@@ -22,8 +22,11 @@ repositories {
 }
 
 dependencies {
+    compile 'com.google.guava:guava:21.0'
     compile 'com.maxmind.geoip2:geoip2:2.9.0'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.22'
+
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.0-M4"
 }
 
 task wrapper(type: Wrapper) {
