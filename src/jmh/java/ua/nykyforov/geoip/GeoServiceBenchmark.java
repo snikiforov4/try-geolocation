@@ -1,8 +1,6 @@
 package ua.nykyforov.geoip;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -13,16 +11,23 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * @author <a href="mailto:s.nikiforov@corp.nekki.ru">Sergey Nikiforov</a>
  */
+@State(Scope.Benchmark)
+@BenchmarkMode({Mode.Throughput})
+@Fork(1)
 public class GeoServiceBenchmark {
 
-    @State(Scope.Benchmark)
-    public static class BenchmarkState {
-        GeoService geoService = GeoService.fromResourceFile("GeoLite2-Country.mmdb");
+    private GeoService geoService;
+
+    @Setup
+    public void prepare() {
+        geoService = GeoService.fromResourceFile("GeoLite2-Country.mmdb");;
     }
 
     @Benchmark
-    public void findingCountries(BenchmarkState state) {
-        state.geoService.findCountryByIp(genRandomIpAddress());
+    @Measurement(iterations = 5)
+    @Warmup(iterations = 2)
+    public void findingCountries() {
+        geoService.findCountryByIp(genRandomIpAddress());
     }
 
     private String genRandomIpAddress() {
@@ -31,13 +36,9 @@ public class GeoServiceBenchmark {
         return "195.140.160." + i;
     }
 
-
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder()
                 .include(".*" + GeoServiceBenchmark.class.getSimpleName() + ".*")
-                .warmupIterations(0)
-                .measurementIterations(7)
-                .forks(1)
                 .build();
 
         new Runner(options).run();

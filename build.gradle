@@ -37,4 +37,11 @@ task wrapper(type: Wrapper) {
 
 jmh {
     jmhVersion = '1.19'
+    include = ['.*Benchmark.*']
+    iterations = 5
+    fork = 1
+    synchronizeIterations = true
+    threads = 1
+    warmupIterations = 2
+    duplicateClassesStrategy = 'exclude'
 }
