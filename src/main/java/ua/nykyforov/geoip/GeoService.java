@@ -1,7 +1,6 @@
 package ua.nykyforov.geoip;
 
 import com.maxmind.geoip2.DatabaseReader;
-import com.maxmind.geoip2.model.CountryResponse;
 import com.maxmind.geoip2.record.Country;
 
 import java.io.File;
@@ -28,9 +27,9 @@ public class GeoService {
         return new GeoService(reader);
     }
 
-    public Country findCountryById(String rawIp) {
+    public Country findCountryByIp(String rawIp) {
         InetAddress ipAddress = toInetAddress(rawIp);
-        return findCountryById(ipAddress);
+        return findCountryByIp(ipAddress);
     }
 
     private InetAddress toInetAddress(String raw) {
@@ -42,15 +41,13 @@ public class GeoService {
         }
     }
 
-    public Country findCountryById(InetAddress ip) {
+    public Country findCountryByIp(InetAddress ip) {
         requireNonNull(ip, "ip");
-        CountryResponse country = null;
         try {
-            country = reader.country(ip);
+            return reader.country(ip).getCountry();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return country.getCountry();
     }
 
 }

@@ -28,7 +28,7 @@ class GeoServiceTest {
         @Test
         void simpleTest() {
             String ip = "195.140.160.233";
-            Country country = geoService.findCountryById(ip);
+            Country country = geoService.findCountryByIp(ip);
 
             assertEquals("Ukraine", country.getName());
             assertEquals("UA", country.getIsoCode());
