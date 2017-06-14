@@ -21,9 +21,14 @@ public class GeoService {
         this.reader = requireNonNull(reader, "reader");
     }
 
-    public static GeoService fromResourceFile(String filename) throws IOException {
+    public static GeoService fromResourceFile(String filename) {
         File database = CommonUtils.getResourceFile(filename);
-        DatabaseReader reader = new DatabaseReader.Builder(database).build();
+        DatabaseReader reader = null;
+        try {
+            reader = new DatabaseReader.Builder(database).build();
+        } catch (IOException e) {
+            throw new RuntimeException("Could not build reader", e);
+        }
         return new GeoService(reader);
     }
 
@@ -37,7 +42,8 @@ public class GeoService {
         try {
             return InetAddress.getByName(raw);
         } catch (UnknownHostException e) {
-            throw new RuntimeException("Could not build ip address", e);
+            String msg = String.format("Could not build InetAddress from raw string: %s", raw);
+            throw new RuntimeException(msg, e);
         }
     }
 
