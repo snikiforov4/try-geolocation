@@ -45,3 +45,16 @@ jmh {
     warmupIterations = 2
     duplicateClassesStrategy = 'exclude'
 }
+
+jar {
+    manifest {
+        attributes(['Implementation-Title': 'Gradle Corporate plugin',
+                'Implementation-Version': version,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version'),
+                'Built-Gradle': gradle.gradleVersion,
+                'Premain-Class': 'ua.nykyforov.util.ObjectSizeFetcher'
+        ])
+    }
+}

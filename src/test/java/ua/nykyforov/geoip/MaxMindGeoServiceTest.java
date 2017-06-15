@@ -4,6 +4,7 @@ import com.maxmind.geoip2.record.Country;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import ua.nykyforov.geoip.maxmind.MaxMindGeoService;
 
 import java.io.IOException;
 
@@ -12,14 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Serhii Nykyforov
  */
-class GeoServiceTest {
+class MaxMindGeoServiceTest {
 
-    private static final String DATABASE_NAME = "GeoLite2-Country.mmdb";
-    private static GeoService geoService;
+    private static MaxMindGeoService geoService;
 
     @BeforeAll
     static void init() throws IOException {
-         geoService = GeoService.fromResource(DATABASE_NAME);
+         geoService = MaxMindGeoService.fromResource(Global.MAXMIND_DATABASE_NAME);
     }
 
     @Nested

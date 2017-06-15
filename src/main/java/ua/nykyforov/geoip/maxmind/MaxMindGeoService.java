@@ -1,7 +1,9 @@
-package ua.nykyforov.geoip;
+package ua.nykyforov.geoip.maxmind;
 
+import com.maxmind.db.Reader;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.record.Country;
+import ua.nykyforov.util.CommonUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,15 +15,15 @@ import static java.util.Objects.requireNonNull;
 /**
  * @author Serhii Nykyforov
  */
-public class GeoService {
+public class MaxMindGeoService {
 
     private final DatabaseReader reader;
 
-    private GeoService(DatabaseReader reader) {
+    private MaxMindGeoService(DatabaseReader reader) {
         this.reader = requireNonNull(reader, "reader");
     }
 
-    public static GeoService fromResource(String filename) {
+    public static MaxMindGeoService fromResource(String filename) {
         InputStream database = CommonUtils.getStreamFromResource(filename);
         DatabaseReader reader = null;
         try {
@@ -29,7 +31,7 @@ public class GeoService {
         } catch (IOException e) {
             throw new RuntimeException("Could not build reader", e);
         }
-        return new GeoService(reader);
+        return new MaxMindGeoService(reader);
     }
 
     public Country findCountryByIp(String rawIp) {

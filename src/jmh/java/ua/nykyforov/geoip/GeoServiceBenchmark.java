@@ -5,6 +5,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import ua.nykyforov.geoip.maxmind.MaxMindGeoService;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -16,11 +17,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @Fork(1)
 public class GeoServiceBenchmark {
 
-    private GeoService geoService;
+    private MaxMindGeoService geoService;
 
     @Setup
     public void prepare() {
-        geoService = GeoService.fromResource("GeoLite2-Country.mmdb");;
+        geoService = MaxMindGeoService.fromResource("GeoLite2-Country.mmdb");;
     }
 
     @Benchmark
