@@ -82,7 +82,11 @@ public final class JavaMapDbIpRepositoryImpl implements DbIpRepository {
         }
     }
 
-    public static TreeMap<Integer, GeoEntity> getIpv4Repository() {
+    public static TreeMap<Integer, GeoEntity> getIPv4Repository() {
         return IPV4_REPOSITORY;
+    }
+
+    public static TreeMap<BigInteger, GeoEntity> getIPv6Repository() {
+        return IPV6_REPOSITORY;
     }
 }

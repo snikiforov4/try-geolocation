@@ -25,7 +25,6 @@ public final class DbIpClient {
 
     private static final Logger logger = LoggerFactory.getLogger("DbIpClient");
 
-    private final File file;
     private final GeoEntityLookupService lookupService = GeoEntityLookupServiceImpl.getInstance();
 
     /**
@@ -44,7 +43,6 @@ public final class DbIpClient {
      */
     public DbIpClient(final File gzip) {
         checkArgument(gzip.exists(), "file " + gzip.getName() + " does not exist");
-        this.file = gzip;
         if (!flag) {
             flag = true;
             logger.info("Loading db ip into repository");
@@ -90,6 +88,6 @@ public final class DbIpClient {
     }
 
     public TreeMap<Integer, GeoEntity> getIpv4Repo() {
-        return JavaMapDbIpRepositoryImpl.getIpv4Repository();
+        return JavaMapDbIpRepositoryImpl.getIPv4Repository();
     }
 }
