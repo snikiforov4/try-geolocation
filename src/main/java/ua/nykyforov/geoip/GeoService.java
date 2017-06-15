@@ -3,8 +3,8 @@ package ua.nykyforov.geoip;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.record.Country;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -21,8 +21,8 @@ public class GeoService {
         this.reader = requireNonNull(reader, "reader");
     }
 
-    public static GeoService fromResourceFile(String filename) {
-        File database = CommonUtils.getResourceFile(filename);
+    public static GeoService fromResource(String filename) {
+        InputStream database = CommonUtils.getStreamFromResource(filename);
         DatabaseReader reader = null;
         try {
             reader = new DatabaseReader.Builder(database).build();

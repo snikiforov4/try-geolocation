@@ -20,7 +20,7 @@ public class GeoServiceBenchmark {
 
     @Setup
     public void prepare() {
-        geoService = GeoService.fromResourceFile("GeoLite2-Country.mmdb");;
+        geoService = GeoService.fromResource("GeoLite2-Country.mmdb");;
     }
 
     @Benchmark

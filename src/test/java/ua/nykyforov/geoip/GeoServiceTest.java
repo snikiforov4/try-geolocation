@@ -19,7 +19,7 @@ class GeoServiceTest {
 
     @BeforeAll
     static void init() throws IOException {
-         geoService = GeoService.fromResourceFile(DATABASE_NAME);
+         geoService = GeoService.fromResource(DATABASE_NAME);
     }
 
     @Nested
