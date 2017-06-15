@@ -27,6 +27,7 @@ dependencies {
     compile 'org.slf4j:slf4j-simple:1.7.22'
 
     jmhCompile 'org.openjdk.jmh:jmh-generator-annprocess:1.19'
+    testCompile 'org.ehcache:sizeof:0.3.0'
     testCompile "org.junit.jupiter:junit-jupiter-api:5.0.0-M4"
 }
 
@@ -54,7 +55,6 @@ jar {
                 'Built-Date': new Date(),
                 'Built-JDK': System.getProperty('java.version'),
                 'Built-Gradle': gradle.gradleVersion,
-                'Premain-Class': 'ua.nykyforov.util.ObjectSizeFetcher'
         ])
     }
 }
