@@ -24,9 +24,9 @@ repositories {
 dependencies {
     compile 'com.google.guava:guava:21.0'
     compile 'com.maxmind.geoip2:geoip2:2.9.0'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.22'
+    compile 'org.slf4j:slf4j-simple:1.7.22'
 
-    jmhCompile group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.19'
+    jmhCompile 'org.openjdk.jmh:jmh-generator-annprocess:1.19'
     testCompile "org.junit.jupiter:junit-jupiter-api:5.0.0-M4"
 }
 
@@ -37,7 +37,7 @@ task wrapper(type: Wrapper) {
 
 jmh {
     jmhVersion = '1.19'
-    include = ['.*Benchmark.*']
+    include = [".*GeoServiceBenchmark.*"]
     iterations = 5
     fork = 1
     synchronizeIterations = true
