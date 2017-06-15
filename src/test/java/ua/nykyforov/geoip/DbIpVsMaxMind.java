@@ -47,7 +47,7 @@ public class DbIpVsMaxMind {
                 cntOfCountriesKnownForDbIp++;
             }
             if (!Objects.equals(mmCountryName, dbIpCountryName) && !Objects.equals(mmCountryCode, dbIpCountryCode)) {
-                LOG.warn("{} maxMind: {}, dbIp: {}", ipAddress, mmCountryName, dbIpCountry);
+                LOG.warn("{} maxMind: {}, dbIp: {}", ipAddress, mmCountryName, dbIpCountryName);
             }
 
         }
