@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @State(Scope.Benchmark)
 @BenchmarkMode({Mode.Throughput})
 @Fork(1)
-public class GeoServiceBenchmark {
+public class MaxMindBenchmark {
 
     private MaxMindGeoService geoService;
 
@@ -39,7 +39,7 @@ public class GeoServiceBenchmark {
 
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder()
-                .include(".*" + GeoServiceBenchmark.class.getSimpleName() + ".*")
+                .include(".*" + MaxMindBenchmark.class.getSimpleName() + ".*")
                 .build();
 
         new Runner(options).run();

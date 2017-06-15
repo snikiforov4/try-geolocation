@@ -19,7 +19,7 @@ class MaxMindGeoServiceTest {
 
     @BeforeAll
     static void init() throws IOException {
-         geoService = MaxMindGeoService.fromResource(Global.MAXMIND_DATABASE_NAME);
+         geoService = MaxMindGeoService.fromResource(Global.MAX_MIND_DATABASE_NAME);
     }
 
     @Nested

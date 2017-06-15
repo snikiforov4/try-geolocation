@@ -11,10 +11,10 @@ import static java.util.Objects.requireNonNull;
 /**
  * @author Serhii Nykyforov
  */
-public class CommonUtils {
+public class IOUtils {
 
     public static File getResourceFile(String filename) {
-        ClassLoader classLoader = CommonUtils.class.getClassLoader();
+        ClassLoader classLoader = IOUtils.class.getClassLoader();
         URL url = requireNonNull(classLoader.getResource(filename),
                 "No url with given name");
         URI uri = getURI(url);
@@ -22,7 +22,7 @@ public class CommonUtils {
     }
 
     public static InputStream getStreamFromResource(String filename) {
-        ClassLoader classLoader = CommonUtils.class.getClassLoader();
+        ClassLoader classLoader = IOUtils.class.getClassLoader();
         return requireNonNull(classLoader.getResourceAsStream(filename),
                 "InputStream");
     }

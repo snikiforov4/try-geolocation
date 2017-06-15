@@ -5,13 +5,13 @@ import com.maxmind.geoip2.DatabaseReader;
 import org.ehcache.sizeof.SizeOf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.nykyforov.util.CommonUtils;
+import ua.nykyforov.util.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static ua.nykyforov.geoip.Global.MAXMIND_DATABASE_NAME;
+import static ua.nykyforov.geoip.Global.MAX_MIND_DATABASE_NAME;
 
 /**
  * @author Serhii Nykyforov
@@ -21,7 +21,7 @@ class ReadersSize {
     private static final Logger LOG = LoggerFactory.getLogger("Geo");
 
     private static void checkSizeUsingMemoryMode() throws IOException {
-        InputStream database = CommonUtils.getStreamFromResource(MAXMIND_DATABASE_NAME);
+        InputStream database = IOUtils.getStreamFromResource(MAX_MIND_DATABASE_NAME);
         DatabaseReader reader = new DatabaseReader.Builder(database)
                 .fileMode(Reader.FileMode.MEMORY)
                 .build();
@@ -30,7 +30,7 @@ class ReadersSize {
     }
 
     private static void checkSizeUsingMemoryMappedMode() throws IOException {
-        File database = CommonUtils.getResourceFile(MAXMIND_DATABASE_NAME);
+        File database = IOUtils.getResourceFile(MAX_MIND_DATABASE_NAME);
         DatabaseReader reader = new DatabaseReader.Builder(database)
                 .fileMode(Reader.FileMode.MEMORY_MAPPED)
                 .build();

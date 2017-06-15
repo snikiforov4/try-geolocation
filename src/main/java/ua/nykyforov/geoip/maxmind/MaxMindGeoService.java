@@ -1,9 +1,8 @@
 package ua.nykyforov.geoip.maxmind;
 
-import com.maxmind.db.Reader;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.record.Country;
-import ua.nykyforov.util.CommonUtils;
+import ua.nykyforov.util.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +23,7 @@ public class MaxMindGeoService {
     }
 
     public static MaxMindGeoService fromResource(String filename) {
-        InputStream database = CommonUtils.getStreamFromResource(filename);
+        InputStream database = IOUtils.getStreamFromResource(filename);
         DatabaseReader reader = null;
         try {
             reader = new DatabaseReader.Builder(database).build();
